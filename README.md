@@ -1,3 +1,15 @@
+STEPS FOR PUSHING LOCAL BRANCH TO GITHUB:
+1. Make sure you are in the branch where you have your local changes
+2. Then, run "git pull origin main" to update your branch with the latest changes from the main branch
+3. If there are any merge conflicts, resolve them BEFORE pushing your branch to GitHub
+4. Once resolved, push to GitHub using "git push"
+
+TO CREATE A NEW BRANCH:
+1. Use the command "git checkout 'branchname' to automatically create and visit the new branch
+2. Use the command "git branch -a" to view all branches
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
