@@ -12,19 +12,9 @@ import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import { useEffect, useState } from 'react';
-import Markdown from 'markdown-to-jsx'; // Fügen Sie die markdown-to-jsx-Bibliothek hinzu
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
-
-const markdownPosts = [post1, post2, post3];
-
-const getMarkdownContent = async (markdownPath) => {
-  const response = await fetch(markdownPath);
-  const markdownText = await response.text();
-  return markdownText;
-};
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -97,17 +87,6 @@ const sidebar = {
 const defaultTheme = createTheme();
 
 export default function Blog() {
-  const [postContents, setPostContents] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const promises = markdownPosts.map((path) => getMarkdownContent(path));
-      const contents = await Promise.all(promises);
-      setPostContents(contents);
-    };
-
-    fetchPosts();
-  }, []);
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -115,8 +94,7 @@ export default function Blog() {
         <Header title="Blog" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={postContents} />
+          <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
