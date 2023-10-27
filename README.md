@@ -8,6 +8,9 @@ TO CREATE A NEW BRANCH:
 1. Use the command "git checkout 'branchname' to automatically create and visit the new branch
 2. Use the command "git branch -a" to view all branches
 
+COMMANDS FOR RUNNING THE SERVER:
+1. Us the command "npm start" to run server and view it in a web-browser
+
 
 
 # Getting Started with Create React App
