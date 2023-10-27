@@ -1,5 +1,5 @@
 import React from 'react';
-import Blog from '../public/blog';
+import Blog from './blog';
 
 function App() {
   return (
