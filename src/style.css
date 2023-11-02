@@ -11,7 +11,40 @@ body {
     color: #FFFFFF;
     padding: 20px;
     text-align: center;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.header-search {
+    display: flex;
+    align-items: center;
+  }
+  
+  input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 200px;
+  }
+  
+  .search-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+.login-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px; /* Add margin to separate it from the header title */
+  }
 
 .header h1 {
     margin: 0;
@@ -101,3 +134,24 @@ a {
     text-decoration: none;
     color: #0079D3;
 }
+
+.trending-subscriptions {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  .subscriptions,
+  .trending {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .subscriptions h2,
+  .trending h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
