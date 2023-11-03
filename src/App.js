@@ -1,23 +1,24 @@
-import logo from "./logo.svg"
-import "./App.css"
+import React from 'react';
+import { BrowserRouter as BRouter, Route, Routes } from 'react-router-dom';
+import Page1 from './components/Page1';
+import Page2 from './components/Page2';
+import Page3 from './components/Page3';
+import LoginForm from './components/LoginForm';
 
+import Layout from "./Layout"
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>New title</p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
+    <BRouter>
+        <Routes>
+          <Route exact path="/" element={<Layout />} />
+          <Route path="/Page1" element={<Page1 />} />
+          <Route path="/Page2" element={<Page2 />} />
+          <Route path="/Page3" element={<Page3 />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+    </BRouter>
+  );
 }
 
-export default App
+export default App;
