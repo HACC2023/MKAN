@@ -14,6 +14,7 @@ const Layout = () => {
     };
     return (
         <div>
+            
             <header className="header">
                 <h1 className="header-title">Lahaina Outreach</h1>
                 <div className="header-search">
