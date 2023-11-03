@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as BRouter, Route, Routes } from 'react-router-dom';
 import Page1 from './components/Page1';
 import Page2 from './components/Page2';
 import Page3 from './components/Page3';
 import LoginForm from './components/LoginForm';
-
 import Layout from "./Layout"
+
 function App() {
+  
+  
   return (
     <BRouter>
         <Routes>
