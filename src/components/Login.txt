@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const LoginForm = ({ onSignIn }) => {
-  // Define the onSignIn prop, even if it's not used in this component
-  onSignIn = onSignIn || (() => {});
-
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -37,9 +34,8 @@ const LoginForm = ({ onSignIn }) => {
 
     // If both email and password are valid, set the flag to ready to redirect
     setIsReadyToRedirect(true);
-  
-    // Call the onSignIn function passed as a prop
-    onSignIn();
+
+    
   };
 
   return (
@@ -62,7 +58,7 @@ const LoginForm = ({ onSignIn }) => {
       />
       {!isPasswordCorrect && <p className="error-message">Incorrect password.</p>}
       {isReadyToRedirect ? (
-        <Link to="/">
+        <Link to="/layout">
           <button className="login-button">Sign In</button>
         </Link>
       ) : (
