@@ -1,8 +1,12 @@
 // CreateAccount.js
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import React, { useState } from 'react';
 
-const CreateAccount = () => {
+const CreateAccount = ({ onSignIn }) => {
+  const navigate = useNavigate();
+  
+
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -28,12 +32,16 @@ const CreateAccount = () => {
     if (password === confirmPassword) {
       // Passwords match, you can proceed with registration
       setPasswordsMatch(true);
-
+      onSignIn();
+      navigate('/');
       // Implement your user registration logic here
     } else {
       // Passwords do not match, set a flag to indicate the mismatch
       setPasswordsMatch(false);
     }
+
+
+
   };
 
   return (
@@ -97,11 +105,9 @@ const CreateAccount = () => {
                 </option>
               ))}
             </select>
-            <Link to="/">
-              <button type="submit" className="create-account-button">
+              <button type="submit" onClick={handleSignUp} className="create-account-button">
                 Sign Up
               </button>
-            </Link>
           </form>
         </div>
       </div>

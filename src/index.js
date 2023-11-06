@@ -25,6 +25,7 @@ const App = () => {
     setIsAuthenticated(false);
   };
 
+
   return (
     <BrowserRouter>
       <Routes>
@@ -33,7 +34,7 @@ const App = () => {
         <Route path="/Page2" element={<Page2 />} />
         <Route path="/Page3" element={<Page3 />} />
         <Route path="/login" element={<LoginForm onSignIn={handleSignIn} />} />
-        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/create-account" element={<CreateAccount onSignIn={handleSignIn} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
