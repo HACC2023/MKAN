@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.css'; /* ./style.css */
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
@@ -40,14 +40,31 @@ const Layout = () => {
                         </li>
                     </ul>
 
+                    <div className="communities">
+                        <h2>Communities</h2>
+                        <ul>
+                            <li><a href="#">Community 1</a></li>
+                            <li><a href="#">Community 2</a></li>
+                            <li><a href="#">Community 3</a></li>
+                            {/* Add more Community items here */}
+                        </ul>
+                    </div>
+
                 </aside>
 
                 <main className="main-content">
           <Posts /> {/* Display the Post component */}
+          <Posts />
+          <Posts />
+          <Posts />
+          <Posts />
+          <Posts />
+          <Posts />
           {/* Add more posts here */}
         </main>
 
                 <aside className="trending-subscriptions">
+
                     <div className="subscriptions">
                         <h2>Subscriptions</h2>
                         <ul>
