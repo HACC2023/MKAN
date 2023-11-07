@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: rgb(228, 228, 228);
+  color: rgb(45, 12, 12);
+}
+
+.toolsList {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 5rem auto;
+  display: grid;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .toolsList {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+.tool {
+  background: white;
+  border-radius: 1rem;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.tool img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.tool h2 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.tool h4 {
+  color: #617d98;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  letter-spacing: 2px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 3rem;
+  text-transform: capitalize;
+}
