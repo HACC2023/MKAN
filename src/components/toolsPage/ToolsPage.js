@@ -1,5 +1,6 @@
-import React from "react"
-const Tools = () => {
+import "./tools.css"
+
+const ToolsPage = () => {
   return (
     <div className='toolsContainer'>
       <section className='toolsList'>
@@ -41,4 +42,4 @@ const tools = [
     id: 3,
   },
 ]
-export default Tools
+export default ToolsPage
