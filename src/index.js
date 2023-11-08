@@ -20,7 +20,7 @@ root.render(
       <Route exact path='/' element={<Layout />} />
       <Route path='/Page1' element={<Page1 />} />
       <Route path='/Page2' element={<Page2 />} />
-      <Route path='/Page3' element={<ToolsPage />} />
+      <Route path='/Tools' element={<ToolsPage />} />
       <Route path='/login' element={<LoginForm />} />
       <Route path='*' element={<NotFound />} />
     </Routes>

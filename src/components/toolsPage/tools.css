@@ -18,6 +18,11 @@ body {
   gap: 2rem;
 }
 
+.toolsTitle img {
+  max-width: 2rem;
+  margin-left: 1rem;
+}
+
 @media screen and (min-width: 768px) {
   .toolsList {
     grid-template-columns: repeat(3, 1fr);
