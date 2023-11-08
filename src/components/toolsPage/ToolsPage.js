@@ -20,6 +20,7 @@ const ToolsPage = () => {
               toolName={tool.toolName}
               link={tool.link}
               image={tool.image}
+              description={tool.description}
               key={tool.id}
             />
           )
