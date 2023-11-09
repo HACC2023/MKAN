@@ -8,6 +8,7 @@ body {
   font-family: "Times New Roman", Times, serif;
   background: rgb(255, 255, 255);
   color: rgb(45, 12, 12);
+  background: cadetblue;
 }
 
 .toolCard:hover {
@@ -16,10 +17,23 @@ body {
   cursor: pointer;
 }
 
-.toolsTitle {
+.homeButton {
+  font-size: 1.2rem;
+  position: relative;
+  left: 50px;
+  top: 50px;
+  color: rgb(143, 143, 253);
+}
+
+.homeButton:hover {
+  color: rgb(56, 56, 255);
+}
+
+.homeButton .toolsTitle {
   margin: 0;
   padding: 2rem;
   background-color: white;
+  font-size: 3rem;
 }
 
 .toolsList {
@@ -33,6 +47,18 @@ body {
 .toolsTitle img {
   max-width: 2rem;
   margin-left: 1rem;
+}
+
+.toolsTitle {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+  padding-top: 0;
+  margin: 1rem;
+}
+
+.toolsHeader {
+  background: white;
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {

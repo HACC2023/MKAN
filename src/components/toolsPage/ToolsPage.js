@@ -2,17 +2,23 @@ import "./tools.css"
 import React from "react"
 import { Tool } from "./Tool"
 import { tools } from "./toolsData"
+import { Link } from "react-router-dom"
 
 const ToolsPage = () => {
   return (
     <div className='toolsContainer'>
-      <h1 className='toolsTitle'>
-        Tools
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/b/ba/Tools_icon.png'
-          alt='tool symbol'
-        />
-      </h1>
+      <section className='toolsHeader'>
+        <Link to='/' className='homeButton'>
+          ← Home
+        </Link>
+        <h1 className='toolsTitle'>
+          Tools
+          <img
+            src='https://upload.wikimedia.org/wikipedia/commons/b/ba/Tools_icon.png'
+            alt='tool symbol'
+          />
+        </h1>
+      </section>
       <section className='toolsList'>
         {tools.map((tool) => {
           return (
