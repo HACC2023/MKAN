@@ -1,26 +1,26 @@
-// Post.js
 import React, { useState } from 'react';
 
-const Post = () => {
-  const [likes, setLikes] = useState(0);
-  const [comments, setComments] = useState([]);
+const Post = ({ post }) => {
+  const { title, content, likes, comments } = post;
+
   const [commentText, setCommentText] = useState('');
 
   const handleLike = () => {
-    setLikes(likes + 1);
+    // Implement liking functionality here
   };
 
   const handleComment = () => {
     if (commentText.trim() !== '') {
-      setComments([...comments, commentText]);
+      // Add a comment to the post
+      post.comments.push(commentText);
       setCommentText('');
     }
   };
 
   return (
     <div className="post">
-      <h2>Post Title 1</h2>
-      <p>Content of the first post goes here...</p>
+      <h2>{title}</h2>
+      <p>{content}</p>
       <p>Comments: {comments.length}</p>
       <button onClick={handleLike}>
         <span role="img" aria-label="Like">👍</span> Like

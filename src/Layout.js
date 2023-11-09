@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
 import Posts from './components/Posts';
 
-const Layout = ({ isAuthenticated, onSignOut }) => {
-  
+const Layout = ({ isAuthenticated, onSignOut, posts }) => {
   return (
     <div>
       <header className="header">
@@ -16,9 +14,14 @@ const Layout = ({ isAuthenticated, onSignOut }) => {
         </div>
         <div className="header-buttons">
           {isAuthenticated ? (
-            <button id="signOutButton" onClick={onSignOut}>
-              Sign Out
-            </button>
+            <>
+              <button id="signOutButton" onClick={onSignOut}>
+                Sign Out
+              </button>
+              <Link to="/create-post">
+                <button>Create Post</button>
+              </Link>
+            </>
           ) : (
             <Link to="/login">
               <button id="signInButton">
@@ -43,12 +46,15 @@ const Layout = ({ isAuthenticated, onSignOut }) => {
             </li>
           </ul>
         </aside>
-
         <main className="main-content">
-          <Posts /> {/* Display the Post component */}
-          {/* Add more posts here */}
-        </main>
+          {posts.slice().reverse().map((post, index) => (
+            <div key={index} className="post">
+              <h2>{post.title}</h2>
+              <p>{post.description}</p>
+            </div>
+          ))}
 
+        </main>
         <aside className="trending-subscriptions">
           <div className="subscriptions">
             <h2>Subscriptions</h2>
@@ -62,10 +68,8 @@ const Layout = ({ isAuthenticated, onSignOut }) => {
               <li>
                 <a href="#">Subscription 3</a>
               </li>
-              {/* Add more subscription items here */}
             </ul>
           </div>
-
           <div className="trending">
             <h2>Trending</h2>
             <ul>
@@ -78,7 +82,6 @@ const Layout = ({ isAuthenticated, onSignOut }) => {
               <li>
                 <a href="#">Trending Topic 3</a>
               </li>
-              {/* Add more trending topics here */}
             </ul>
           </div>
         </aside>
