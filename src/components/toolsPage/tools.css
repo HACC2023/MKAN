@@ -8,7 +8,7 @@ body {
   font-family: "Times New Roman", Times, serif;
   background: rgb(255, 255, 255);
   color: rgb(45, 12, 12);
-  background: cadetblue;
+  background: rgb(197, 220, 221);
 }
 
 .toolCard:hover {
@@ -57,8 +57,19 @@ body {
 }
 
 .toolsHeader {
-  background: white;
+  background: rgb(255, 255, 255);
   position: relative;
+}
+
+.toolDesc {
+  background: cadetblue;
+  margin: 0;
+  padding: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  position: relative;
+  top: -19px;
 }
 
 @media screen and (min-width: 768px) {

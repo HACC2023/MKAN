@@ -19,6 +19,13 @@ const ToolsPage = () => {
           />
         </h1>
       </section>
+      <section className='toolDesc'>
+        <p className='toolDescContent'>Welcome to the tools page!</p>
+        <p>
+          Here you can find a variety of tools to aid you in the task of
+          rebuilding Lahaina
+        </p>
+      </section>
       <section className='toolsList'>
         {tools.map((tool) => {
           return (
