@@ -45,7 +45,7 @@ const CreateAccount = ({ onSignIn, onPostCreate }) => {
     });
 
     console.log('New post created:', newPost);
-    // window.location.href = '/';
+    window.location.href = '/';
   };
 
   return (

@@ -1,32 +1,40 @@
 import React, { useState } from 'react';
 
-const Post = ({ post }) => {
-  const { title, content, likes, comments } = post;
-
+const Post = () => {
+  const [likes, setLikes] = useState(0);
+  const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
 
   const handleLike = () => {
-    // Implement liking functionality here
+    setLikes(likes + 1);
   };
 
   const handleComment = () => {
     if (commentText.trim() !== '') {
-      // Add a comment to the post
-      post.comments.push(commentText);
+      setComments([...comments, commentText]);
       setCommentText('');
     }
   };
 
   return (
-    <div className="post">
-      <h2>{title}</h2>
-      <p>{content}</p>
-      <p>Comments: {comments.length}</p>
-      <button onClick={handleLike}>
-        <span role="img" aria-label="Like">👍</span> Like
-      </button>
-      <span>{likes} likes</span>
-      <div>
+    <div className="post" style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex" }}>
+      <div className="image-container">
+      <img src="lahaina.jpg" alt="Lahaina" style={{ width: "250px", height: "auto" }} />
+    </div>
+        <div className="post-content">
+          <h2>Post Title</h2>
+          <p>Content of the post goes here...</p>
+        </div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <button onClick={handleLike} style={{ padding: "10px 10px", marginRight: "10px" }}>
+          <span role="img" aria-label="Like" style={{ fontSize: "14px" }}>👍</span>
+        </button>
+        <span>{likes} likes</span>
+        <p style={{ marginLeft: "10px" }}>{comments.length} comments</p>
+      </div>
+      <div style={{ marginTop: "auto", display: "flex" }}>
         <input
           type="text"
           placeholder="Add a comment..."

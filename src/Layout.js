@@ -1,10 +1,9 @@
-
 import React from "react"
 import "./style.css" /* ./style.css */
 import { Link } from "react-router-dom"
 import ReactDOM from "react-dom"
 import { createRoot } from "react-dom/client"
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Posts from './components/Posts';
 
 
@@ -15,14 +14,17 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
 
   const handleLike = (selectedPost) => {
     // Create a copy of the state posts
+    console.log('like');
     const updatedPosts = statePosts.map((post) =>
       post.id === selectedPost.id
         ? {
             ...post,
             liked: !post.liked,
             likes: post.liked ? post.likes - 1 : post.likes + 1,
+            
           }
         : post
+        
     );
 
     // Update the state with the updated posts
@@ -58,10 +60,24 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
           <button className='search-button'>Search</button>{" "}
           {/* Search button */}
         </div>
-        <Link to='/login'>
-          <button id='loginButton'>Login</button>{" "}
-          {/* Link to the new login page */}
-        </Link>
+        <div className="header-buttons">
+          {isAuthenticated ? (
+            <>
+              <button id="signOutButton" onClick={onSignOut}>
+                Sign Out
+              </button>
+              <Link to="/create-post">
+                <button>Create Post</button>
+              </Link>
+            </>
+          ) : (
+            <Link to="/login">
+              <button id="signInButton">
+                Sign In
+              </button>
+            </Link>
+          )}
+          </div>
       </header>
       <div className='layout-container'>
         <aside className='sidebar'>

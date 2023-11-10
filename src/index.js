@@ -16,11 +16,11 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [posts, setPosts] = useState([]); // Create state for posts
 
-    // Use useEffect to retrieve posts from localStorage on component mount
-    useEffect(() => {
-      const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
-      setPosts(storedPosts);
-    }, []);
+  // Use useEffect to retrieve posts from localStorage on component mount
+  useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    setPosts(storedPosts);
+  }, []);
 
   const handleSignIn = () => {
     setIsAuthenticated(true);
@@ -33,13 +33,13 @@ const App = () => {
   const addPost = (post) => {
     // Update component state
     setPosts((prevPosts) => [...prevPosts, post]);
-  
+
     // Store posts in localStorage
     const postsInStorage = JSON.parse(localStorage.getItem('posts')) || [];
     postsInStorage.push(post);
     localStorage.setItem('posts', JSON.stringify(postsInStorage));
   };
-  
+
 
   //  // Add an example post
   //  useEffect(() => {
