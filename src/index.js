@@ -6,7 +6,7 @@ import reportWebVitals from './a/reportWebVitals'; // Correct the path
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Page1 from './components/Page1';
 import Page2 from './components/Page2';
-import Page3 from './components/Page3';
+import ToolsPage from "./components/toolsPage/ToolsPage"
 import NotFound from './components/NotFound';
 import CreateAccount from './components/CreateAccount';
 import LoginForm from './components/LoginForm';
@@ -67,7 +67,7 @@ const App = () => {
         />
         <Route path="/Page1" element={<Page1 />} />
         <Route path="/Page2" element={<Page2 />} />
-        <Route path="/Page3" element={<Page3 />} />
+        <Route path='/Tools' element={<ToolsPage />} />
         <Route path="/login" element={<LoginForm onSignIn={handleSignIn} />} />
         <Route
           path="/create-account"
@@ -87,3 +87,4 @@ const root = document.getElementById('root'); // No need to use createRoot
 ReactDOM.render(<App />, root); // Render the App component
 
 reportWebVitals();
+

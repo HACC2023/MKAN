@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: rgb(255, 255, 255);
+  color: rgb(45, 12, 12);
+  background: rgb(197, 220, 221);
+}
+
+.toolCard:hover {
+  box-shadow: 0 0 10px black;
+  border: none;
+  cursor: pointer;
+}
+
+.homeButton {
+  font-size: 1.2rem;
+  position: relative;
+  left: 50px;
+  top: 50px;
+  color: rgb(143, 143, 253);
+}
+
+.homeButton:hover {
+  color: rgb(56, 56, 255);
+}
+
+.homeButton .toolsTitle {
+  margin: 0;
+  padding: 2rem;
+  background-color: white;
+  font-size: 3rem;
+}
+
+.toolsList {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 5rem auto;
+  display: grid;
+  gap: 2rem;
+}
+
+.toolsTitle img {
+  max-width: 2rem;
+  margin-left: 1rem;
+}
+
+.toolsTitle {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+  padding-top: 0;
+  margin: 1rem;
+}
+
+.toolsHeader {
+  background: rgb(255, 255, 255);
+  position: relative;
+}
+
+.toolDesc {
+  background: cadetblue;
+  margin: 0;
+  padding: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  position: relative;
+  top: -19px;
+}
+
+@media screen and (min-width: 768px) {
+  .toolsList {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+.toolCard {
+  background: rgb(255, 255, 255);
+  border-radius: 1rem;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  border: 2px solid rgb(208, 208, 208);
+}
+
+.toolCard img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.toolCard h1 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: #000000;
+}
+
+.toolCard p {
+  color: #000000;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 3rem;
+  text-transform: capitalize;
+}

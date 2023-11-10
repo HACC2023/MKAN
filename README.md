@@ -1,3 +1,22 @@
+STEPS FOR PUSHING LOCAL BRANCH TO GITHUB:
+1. Make sure you are in the branch where you have your local changes
+2. Then, run "git pull origin main" to update your branch with the latest changes from the main branch
+3. If there are any merge conflicts, resolve them BEFORE pushing your branch to GitHub
+4. Once resolved, push to GitHub using "git push origin <branchname>"
+5. If your branch is ready to be merged with the main branch, go to GitHub and click "Compare & Pull Request"
+6. The pull-request will have to be approved by a team member
+7. Once the merge is complete, it is good practice to delete the branch (but not strictly necessary). Use "git branch -d <branchname>" to delete the branch locally. The remote branch (the one on GitHub) can be deleted manually.
+
+TO CREATE A NEW BRANCH:
+1. Use the command "git checkout -b 'branchname'" to automatically create and visit the new branch (locally)
+2. Use the command "git branch -a" to view all branches
+
+COMMANDS FOR RUNNING THE SERVER:
+1. Us the command "npm start" to run server and view it in a web-browser
+2. To stop running the server use "Ctrl + C" (might be a different command depending on operating system)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

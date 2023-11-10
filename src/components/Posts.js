@@ -32,8 +32,11 @@ const Post = ({ post }) => {
           placeholder="Add a comment..."
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
+          style={{ height: "20px", width: "188px" }}
         />
-        <button onClick={handleComment}>Comment</button>
+        <button onClick={handleComment} style={{ marginLeft: "10px" }}>
+          Comment
+        </button>
       </div>
       <div>
         {comments.map((comment, index) => (
@@ -42,6 +45,7 @@ const Post = ({ post }) => {
       </div>
     </div>
   );
+  
 };
 
 export default Post;

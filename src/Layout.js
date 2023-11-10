@@ -1,7 +1,12 @@
+
+import React from "react"
+import "./style.css" /* ./style.css */
+import { Link } from "react-router-dom"
+import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import React, { useState } from 'react';
-import './style.css';
-import { Link } from 'react-router-dom';
 import Posts from './components/Posts';
+
 
 const Layout = ({ isAuthenticated, onSignOut, posts }) => {
   const [commentText, setCommentText] = useState('');
@@ -46,47 +51,52 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
 
   return (
     <div>
-      <header className="header">
-        <h1 className="header-title">Lahaina Outreach</h1>
-        <div className="header-search">
-          <input type="text" placeholder="Search..." />
-          <button className="search-button">Search</button>
+      <header className='header'>
+        <h1 className='header-title'>Lahaina Outreach</h1>
+        <div className='header-search'>
+          <input type='text' placeholder='Search...' /> {/* Search input */}
+          <button className='search-button'>Search</button>{" "}
+          {/* Search button */}
         </div>
-        <div className="header-buttons">
-          {isAuthenticated ? (
-            <>
-              <button id="signOutButton" onClick={onSignOut}>
-                Sign Out
-              </button>
-              <Link to="/create-post">
-                <button>Create Post</button>
-              </Link>
-            </>
-          ) : (
-            <Link to="/login">
-              <button id="signInButton">
-                Sign In
-              </button>
-            </Link>
-          )}
-        </div>
+        <Link to='/login'>
+          <button id='loginButton'>Login</button>{" "}
+          {/* Link to the new login page */}
+        </Link>
       </header>
-      <div className="layout-container">
-        <aside className="sidebar">
+      <div className='layout-container'>
+        <aside className='sidebar'>
           <h2>Explore</h2>
           <ul>
             <li>
-              <Link to="/Page1">Link to Page 1</Link>
+              <Link to='/Page1'>Link to Page 1</Link>
             </li>
             <li>
-              <Link to="/Page2">Link to Page 2</Link>
+              <Link to='/Page2'>Link to Page 2</Link>
             </li>
             <li>
-              <Link to="/Page3">Link to Page 3</Link>
+              <Link to='/Tools'>Tools</Link>
             </li>
           </ul>
         </aside>
-        <main className="main-content">
+        <aside>
+          <div className='communities'>
+            <h2>Communities</h2>
+            <ul>
+              <li>
+                <a href='#'>Community 1</a>
+              </li>
+              <li>
+                <a href='#'>Community 2</a>
+              </li>
+              <li>
+                <a href='#'>Community 3</a>
+              </li>
+              {/* Add more Community items here */}
+            </ul>
+          </div>
+        </aside>
+
+        <main className='main-content'>
           {posts.slice().reverse().map((post, index) => (
             <div key={index} className="post">
               <h2>{post.title}</h2>
@@ -120,39 +130,46 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
             </div>
           ))}
         </main>
-        <aside className="trending-subscriptions">
-          <div className="subscriptions">
+
+        <aside className='trending-subscriptions'>
+          <div className='subscriptions'>
             <h2>Subscriptions</h2>
             <ul>
               <li>
-                <a href="#">Subscription 1</a>
+                <a href='#'>Subscription 1</a>
               </li>
               <li>
-                <a href="#">Subscription 2</a>
+                <a href='#'>Subscription 2</a>
               </li>
               <li>
-                <a href="#">Subscription 3</a>
+                <a href='#'>Subscription 3</a>
               </li>
+              {/* Add more subscription items here */}
             </ul>
           </div>
-          <div className="trending">
+
+          <div className='trending'>
             <h2>Trending</h2>
             <ul>
               <li>
-                <a href="#">Trending Topic 1</a>
+                <a href='#'>Trending Topic 1</a>
               </li>
               <li>
-                <a href="#">Trending Topic 2</a>
+                <a href='#'>Trending Topic 2</a>
               </li>
               <li>
-                <a href="#">Trending Topic 3</a>
+                <a href='#'>Trending Topic 3</a>
               </li>
+              {/* Add more trending topics here */}
+
             </ul>
           </div>
         </aside>
       </div>
     </div>
+
   );
 };
 
-export default Layout;
+
+export default Layout
