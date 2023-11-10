@@ -1,9 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import Posts from './components/Posts';
 
 const Layout = ({ isAuthenticated, onSignOut, posts }) => {
+  const [commentText, setCommentText] = useState('');
+  const [commentTextByPost, setCommentTextByPost] = useState({});
+  const [statePosts, setStatePosts] = useState(posts);
+
+  const handleLike = (selectedPost) => {
+    // Create a copy of the state posts
+    const updatedPosts = statePosts.map((post) =>
+      post.id === selectedPost.id
+        ? {
+            ...post,
+            liked: !post.liked,
+            likes: post.liked ? post.likes - 1 : post.likes + 1,
+          }
+        : post
+    );
+
+    // Update the state with the updated posts
+    setStatePosts(updatedPosts);
+  };
+
+
+  const handleComment = (post) => {
+    const newComment = commentTextByPost[post.id];
+
+    if (post && newComment) {
+      if (!post.comments) {
+        post.comments = [];
+      }
+
+      // Add the new comment to the post's comments array
+      post.comments.push(newComment);
+
+      // Clear the comment input field for this post
+      setCommentTextByPost({ ...commentTextByPost, [post.id]: '' });
+
+      // Update the posts array to reflect the changes
+      ;
+    }
+  };
+
   return (
     <div>
       <header className="header">
@@ -51,9 +91,34 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
             <div key={index} className="post">
               <h2>{post.title}</h2>
               <p>{post.description}</p>
+              <p>Likes: {post.likes || 0}</p>
+              <button onClick={() => handleLike(post)}>
+                {post.liked ? 'Unlike' : 'Like'}
+              </button>
+              <div>
+                {post.comments && post.comments.length > 0 && (
+                  <div>
+                    <h3>Comments:</h3>
+                    {post.comments.map((comment, commentIndex) => (
+                      <p key={commentIndex}>{comment}</p>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                value={commentTextByPost[post.id] || ''}
+                onChange={(e) =>
+                  setCommentTextByPost({
+                    ...commentTextByPost,
+                    [post.id]: e.target.value,
+                  })
+                }
+              />
+              <button onClick={() => handleComment(post)}>Comment</button>
             </div>
           ))}
-
         </main>
         <aside className="trending-subscriptions">
           <div className="subscriptions">

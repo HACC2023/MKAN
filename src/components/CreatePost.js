@@ -31,6 +31,8 @@ const CreateAccount = ({ onSignIn, onPostCreate }) => {
     const newPost = {
       title: formData.title,
       description: formData.description,
+      likes: 0, // Initialize likes to 0
+      comments: [], // Initialize comments as an empty array
     };
 
     // Call the onPostCreate function to add the new post
