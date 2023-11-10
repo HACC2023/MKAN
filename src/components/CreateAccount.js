@@ -1,11 +1,9 @@
 // CreateAccount.js
-import { Link, useNavigate  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 const CreateAccount = ({ onSignIn }) => {
   const navigate = useNavigate();
-  
-
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -32,16 +30,32 @@ const CreateAccount = ({ onSignIn }) => {
     if (password === confirmPassword) {
       // Passwords match, you can proceed with registration
       setPasswordsMatch(true);
+
+      // Create an Account object with the current accountInfo
+      const newAccount = {
+        firstName,
+        lastName,
+        email,
+        password,
+        island: selectedIsland,
+      };
+
+      // Store the newAccount object in localStorage
+      localStorage.setItem('userAccount', JSON.stringify(newAccount));
+
+      // Log the newAccount object (you can remove this line in production)
+      console.log('New Account:', newAccount);
+
+      // Trigger the onSignIn callback
       onSignIn();
+
+      // Navigate to the home page
       navigate('/');
-      // Implement your user registration logic here
     } else {
       // Passwords do not match, set a flag to indicate the mismatch
       setPasswordsMatch(false);
     }
-
-
-
+    
   };
 
   return (

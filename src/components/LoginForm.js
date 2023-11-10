@@ -15,7 +15,7 @@ const LoginForm = ({ onSignIn }) => {
     // Basic email format validation
     const emailRegex = /^\S+@\S+\.\S+$/;
     const isValidEmail = emailRegex.test(email);
-
+  
     if (!isValidEmail) {
       setIsEmailValid(false);
       setIsReadyToRedirect(false); // Email is not valid, so not ready to redirect
@@ -23,24 +23,24 @@ const LoginForm = ({ onSignIn }) => {
     } else {
       setIsEmailValid(true);
     }
-
-    // Check if the password is correct (temporary password: "Demo123")
-    const correctPassword = 'Demo123';
-
-    if (password !== correctPassword) {
-      setIsPasswordCorrect(false);
-      setIsReadyToRedirect(false); // Password is not correct, so not ready to redirect
-      return;
-    } else {
-      setIsPasswordCorrect(true);
-    }
-
-    // If both email and password are valid, set the flag to ready to redirect
-    setIsReadyToRedirect(true);
   
-    // Call the onSignIn function passed as a prop
-    onSignIn();
+    // Retrieve account information from localStorage
+    const storedAccount = localStorage.getItem('userAccount');
+    const account = storedAccount ? JSON.parse(storedAccount) : null;
+  
+    // Check if the email and password match the stored account information
+    if (account && account.email === email && account.password === password) {
+      setIsPasswordCorrect(true);
+      setIsReadyToRedirect(true);
+      // Call the onSignIn function passed as a prop
+      onSignIn();
+    } else {
+      // Email or password is incorrect
+      setIsPasswordCorrect(false);
+      setIsReadyToRedirect(false);
+    }
   };
+  
 
   return (
     <div className="login-form-container">

@@ -13,10 +13,11 @@ import LoginForm from './components/LoginForm';
 import CreatePost from './components/CreatePost'; // Import CreatePost component
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [posts, setPosts] = useState([]); // Create state for posts
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isAuthenticated') === 'true'
+  );
+  const [posts, setPosts] = useState([]);
 
-  // Use useEffect to retrieve posts from localStorage on component mount
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
     setPosts(storedPosts);
@@ -24,12 +25,13 @@ const App = () => {
 
   const handleSignIn = () => {
     setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true');
   };
 
   const handleSignOut = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem('isAuthenticated');
   };
-
   const addPost = (post) => {
     // Update component state
     setPosts((prevPosts) => [...prevPosts, post]);
@@ -38,6 +40,15 @@ const App = () => {
     const postsInStorage = JSON.parse(localStorage.getItem('posts')) || [];
     postsInStorage.push(post);
     localStorage.setItem('posts', JSON.stringify(postsInStorage));
+  };
+  
+  const onDeletePost = (index) => {
+    setPosts((prevPosts) => {
+      const updatedPosts = [...prevPosts];
+      updatedPosts.splice(index, 1);
+      localStorage.setItem('posts', JSON.stringify(updatedPosts));
+      return updatedPosts;
+    });
   };
 
 
@@ -62,6 +73,7 @@ const App = () => {
               isAuthenticated={isAuthenticated}
               onSignOut={handleSignOut}
               posts={posts}
+              onDeletePost={onDeletePost}
             />
           }
         />

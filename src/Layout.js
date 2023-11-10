@@ -3,52 +3,77 @@ import "./style.css" /* ./style.css */
 import { Link } from "react-router-dom"
 import ReactDOM from "react-dom"
 import { createRoot } from "react-dom/client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Posts from './components/Posts';
 
 
-const Layout = ({ isAuthenticated, onSignOut, posts }) => {
+const Layout = ({ isAuthenticated, onSignOut, posts, onDeletePost }) => {
   const [commentText, setCommentText] = useState('');
   const [commentTextByPost, setCommentTextByPost] = useState({});
   const [statePosts, setStatePosts] = useState(posts);
 
+  useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    setStatePosts(storedPosts);
+  }, []);
+  
+
   const handleLike = (selectedPost) => {
     // Create a copy of the state posts
-    console.log('like');
     const updatedPosts = statePosts.map((post) =>
       post.id === selectedPost.id
         ? {
             ...post,
             liked: !post.liked,
-            likes: post.liked ? post.likes - 1 : post.likes + 1,
-            
+            likes: !post.liked ? post.likes + 1 : post.likes - 1,
           }
         : post
-        
     );
 
     // Update the state with the updated posts
     setStatePosts(updatedPosts);
+
+    // Update localStorage after liking/unliking the post
+    localStorage.setItem('posts', JSON.stringify(updatedPosts));
+    window.location.reload();
   };
-
-
+  
   const handleComment = (post) => {
     const newComment = commentTextByPost[post.id];
-
+  
     if (post && newComment) {
       if (!post.comments) {
         post.comments = [];
       }
-
+  
       // Add the new comment to the post's comments array
       post.comments.push(newComment);
-
+  
+      // Update the posts array to reflect the changes
+      setStatePosts((prevPosts) =>
+        prevPosts.map((p) => (p.id === post.id ? { ...post } : p))
+      );
+  
+      // Update localStorage with the updated posts
+      localStorage.setItem(
+        'posts',
+        JSON.stringify(statePosts.map((p) => (p.id === post.id ? { ...post } : p)))
+      );
+  
       // Clear the comment input field for this post
       setCommentTextByPost({ ...commentTextByPost, [post.id]: '' });
-
-      // Update the posts array to reflect the changes
-      ;
     }
+  };
+  
+
+  const handleDeletePost = (index) => {
+    const originalIndex = posts.length - 1 - index;
+    onDeletePost(originalIndex);
+    
+    // Update localStorage after deleting the post
+    const updatedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    updatedPosts.splice(originalIndex, 1);
+    localStorage.setItem('posts', JSON.stringify(updatedPosts));
   };
 
   return (
@@ -77,7 +102,7 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
               </button>
             </Link>
           )}
-          </div>
+        </div>
       </header>
       <div className='layout-container'>
         <aside className='sidebar'>
@@ -117,10 +142,15 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
             <div key={index} className="post">
               <h2>{post.title}</h2>
               <p>{post.description}</p>
-              <p>Likes: {post.likes || 0}</p>
+              <p>Likes: {post.likes}</p>
               <button onClick={() => handleLike(post)}>
                 {post.liked ? 'Unlike' : 'Like'}
               </button>
+              {isAuthenticated && (
+                <button onClick={() => handleDeletePost(index)}>
+                  Delete Post
+                </button>
+              )}
               <div>
                 {post.comments && post.comments.length > 0 && (
                   <div>
@@ -129,6 +159,7 @@ const Layout = ({ isAuthenticated, onSignOut, posts }) => {
                       <p key={commentIndex}>{comment}</p>
                     ))}
                   </div>
+
                 )}
               </div>
               <input
