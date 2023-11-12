@@ -142,7 +142,7 @@ const Layout = ({ isAuthenticated, onSignOut, posts, onDeletePost }) => {
             <div key={index} className="post">
               <h2>{post.title}</h2>
               <p>{post.description}</p>
-              <p>Likes: {post.likes}</p>
+              <p>Likes: {post.likes} | Posted by: {post.user ? `${post.user.firstName} ${post.user.lastName}` : 'Unknown User'}</p>
               <button onClick={() => handleLike(post)}>
                 {post.liked ? 'Unlike' : 'Like'}
               </button>

@@ -2,7 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
-const CreateAccount = ({ onSignIn }) => {
+const CreateAccount = ({ onSignIn, onAccountCreateSuccess  }) => {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState('');
@@ -15,6 +15,7 @@ const CreateAccount = ({ onSignIn }) => {
   const islands = ['Hawaii', 'Maui', 'Oahu', 'Kauai', 'Molokai', 'Lanai'];
   const [passwordsMatch, setPasswordsMatch] = useState(true); // State to track password matching
   const [formSubmitted, setFormSubmitted] = useState(false); // State to track form submission
+
 
   const handleSignUp = (e) => {
     e.preventDefault(); // Prevent the default form submission
@@ -49,13 +50,15 @@ const CreateAccount = ({ onSignIn }) => {
       // Trigger the onSignIn callback
       onSignIn();
 
+      // Trigger the onAccountCreateSuccess callback with the new user information
+      onAccountCreateSuccess(newAccount);
+
       // Navigate to the home page
       navigate('/');
     } else {
       // Passwords do not match, set a flag to indicate the mismatch
       setPasswordsMatch(false);
     }
-    
   };
 
   return (

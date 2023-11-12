@@ -33,7 +33,12 @@ const LoginForm = ({ onSignIn }) => {
       setIsPasswordCorrect(true);
       setIsReadyToRedirect(true);
       // Call the onSignIn function passed as a prop
-      onSignIn();
+      onSignIn({
+        firstName: account.firstName,
+        lastName: account.lastName,
+        email: account.email,
+        // Add other user properties as needed
+      });
     } else {
       // Email or password is incorrect
       setIsPasswordCorrect(false);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const CreateAccount = ({ onSignIn, onPostCreate }) => {
+const CreateAccount = ({ onSignIn, onPostCreate, currentUser }) => {
   // Define the formData state to manage form input
   const [formData, setFormData] = useState({
     title: '', // Initialize state for the title input
@@ -33,6 +33,10 @@ const CreateAccount = ({ onSignIn, onPostCreate }) => {
       description: formData.description,
       likes: 0, // Initialize likes to 0
       comments: [], // Initialize comments as an empty array
+      user: {
+        firstName: currentUser.firstName || 'Unknown',
+        lastName: currentUser.lastName || 'User',
+      },
     };
 
     // Call the onPostCreate function to add the new post

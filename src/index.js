@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom'; // Import ReactDOM correctly
+import ReactDOM from 'react-dom';
 import './style.css';
 import Layout from './Layout';
-import reportWebVitals from './a/reportWebVitals'; // Correct the path
+import reportWebVitals from './a/reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Page1 from './components/Page1';
 import Page2 from './components/Page2';
@@ -10,20 +10,22 @@ import ToolsPage from "./components/toolsPage/ToolsPage"
 import NotFound from './components/NotFound';
 import CreateAccount from './components/CreateAccount';
 import LoginForm from './components/LoginForm';
-import CreatePost from './components/CreatePost'; // Import CreatePost component
+import CreatePost from './components/CreatePost';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem('isAuthenticated') === 'true'
   );
   const [posts, setPosts] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
     setPosts(storedPosts);
   }, []);
 
-  const handleSignIn = () => {
+  const handleSignIn = (userInfo) => {
+    setCurrentUser(userInfo);
     setIsAuthenticated(true);
     localStorage.setItem('isAuthenticated', 'true');
   };
@@ -32,11 +34,9 @@ const App = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
   };
-  const addPost = (post) => {
-    // Update component state
-    setPosts((prevPosts) => [...prevPosts, post]);
 
-    // Store posts in localStorage
+  const addPost = (post) => {
+    setPosts((prevPosts) => [...prevPosts, post]);
     const postsInStorage = JSON.parse(localStorage.getItem('posts')) || [];
     postsInStorage.push(post);
     localStorage.setItem('posts', JSON.stringify(postsInStorage));
@@ -50,17 +50,6 @@ const App = () => {
       return updatedPosts;
     });
   };
-
-
-  //  // Add an example post
-  //  useEffect(() => {
-  //   const examplePost = {
-  //     title: 'Example Post',
-  //     description: 'This is an example post description.',
-  //   };
-  //   addPost(examplePost);
-  // }, []);
-
 
   return (
     <BrowserRouter>
@@ -87,7 +76,7 @@ const App = () => {
         />
         <Route
           path="/create-post"
-          element={<CreatePost onPostCreate={addPost} />}
+          element={<CreatePost currentUser={currentUser} onPostCreate={addPost} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -95,8 +84,7 @@ const App = () => {
   );
 };
 
-const root = document.getElementById('root'); // No need to use createRoot
-ReactDOM.render(<App />, root); // Render the App component
+const root = document.getElementById('root');
+ReactDOM.render(<App />, root);
 
 reportWebVitals();
-
