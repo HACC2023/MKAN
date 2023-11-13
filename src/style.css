@@ -149,11 +149,240 @@ body {
     margin-bottom: 10px;
   }
   
-  a {
-    text-decoration: none;
-    color: #333;
+/* Apply this CSS to the container div surrounding your login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height as needed */
   }
   
-  a:hover {
-    text-decoration: underline;
+  /* Style the form */
+  .login-form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Adjust the width as needed */
   }
+  
+  /* Center the form inside the container */
+  .login-form {
+    margin: auto;
+  }
+  
+  /* Styling for the Create Account form */
+.create-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  .create-account-form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto; /* Center the form horizontally */
+  }
+  
+  .create-account-form input {
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    padding-right: 10px;
+  }
+  
+  .create-account-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .create-account-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .create-account-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for required (empty) fields */
+.create-account-input.required {
+    border: 2px solid red;
+  }
+  .create-account-select.required {
+    border: 2px solid red;
+  }
+
+  .header-line {
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 90%; /* Adjust the width as needed */
+  }
+  
+  /* Styling for the Create Account page */
+.create-account-page {
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+  
+  /* Styling for the Login page, similar to Create Account page */
+.login-form-container {
+  background-color: #fff;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-input.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #0074b8;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #005a93;
+}
+
+.create-account-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.create-account-link a {
+  color: #0074b8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-account-link a:hover {
+  text-decoration: underline;
+}
+
+/* Add this CSS to your style.css file or in a separate CSS file */
+#createPostButton {
+  background-color: #007bff; /* Blue color, you can change it */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Add any other styling you want for the button, such as hover effects */
+#createPostButton:hover {
+  background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+.create-post-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.create-post-page h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.create-post-page label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.create-post-page input,
+.create-post-page textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.create-post-page button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-post-page button:hover {
+  background-color: #0056b3;
+}
+
+.create-post-page a {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.create-post-page a:hover {
+  text-decoration: underline;
+}
+
+
+  

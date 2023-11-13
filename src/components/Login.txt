@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const LoginForm = ({ onSignIn }) => {
-  // Define the onSignIn prop, even if it's not used in this component
-  onSignIn = onSignIn || (() => {});
-
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -15,7 +12,7 @@ const LoginForm = ({ onSignIn }) => {
     // Basic email format validation
     const emailRegex = /^\S+@\S+\.\S+$/;
     const isValidEmail = emailRegex.test(email);
-  
+
     if (!isValidEmail) {
       setIsEmailValid(false);
       setIsReadyToRedirect(false); // Email is not valid, so not ready to redirect
@@ -23,29 +20,23 @@ const LoginForm = ({ onSignIn }) => {
     } else {
       setIsEmailValid(true);
     }
-  
-    // Retrieve account information from localStorage
-    const storedAccount = localStorage.getItem('userAccount');
-    const account = storedAccount ? JSON.parse(storedAccount) : null;
-  
-    // Check if the email and password match the stored account information
-    if (account && account.email === email && account.password === password) {
-      setIsPasswordCorrect(true);
-      setIsReadyToRedirect(true);
-      // Call the onSignIn function passed as a prop
-      onSignIn({
-        firstName: account.firstName,
-        lastName: account.lastName,
-        email: account.email,
-        // Add other user properties as needed
-      });
-    } else {
-      // Email or password is incorrect
+
+    // Check if the password is correct (temporary password: "Demo123")
+    const correctPassword = 'Demo123';
+
+    if (password !== correctPassword) {
       setIsPasswordCorrect(false);
-      setIsReadyToRedirect(false);
+      setIsReadyToRedirect(false); // Password is not correct, so not ready to redirect
+      return;
+    } else {
+      setIsPasswordCorrect(true);
     }
+
+    // If both email and password are valid, set the flag to ready to redirect
+    setIsReadyToRedirect(true);
+
+    
   };
-  
 
   return (
     <div className="login-form-container">
@@ -67,7 +58,7 @@ const LoginForm = ({ onSignIn }) => {
       />
       {!isPasswordCorrect && <p className="error-message">Incorrect password.</p>}
       {isReadyToRedirect ? (
-        <Link to="/">
+        <Link to="/layout">
           <button className="login-button">Sign In</button>
         </Link>
       ) : (
