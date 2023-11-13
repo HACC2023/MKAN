@@ -109,7 +109,7 @@ const Layout = ({ isAuthenticated, onSignOut, posts, onDeletePost }) => {
           <h2>Explore</h2>
           <ul>
             <li>
-              <Link to='/Page1'>Link to Page 1</Link>
+              <Link to='/Page1'>More information</Link>
             </li>
             <li>
               <Link to='/Page2'>Link to Page 2</Link>
