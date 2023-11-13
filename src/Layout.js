@@ -34,7 +34,7 @@ const Layout = () => {
               <Link to='/Page1'>Link to Page 1</Link>
             </li>
             <li>
-              <Link to='/Page2'>Link to Page 2</Link>
+              <Link to='/Page2'>Surveys</Link>
             </li>
             <li>
               <Link to='/Tools'>Tools</Link>
