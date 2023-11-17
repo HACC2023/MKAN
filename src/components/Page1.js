@@ -17,7 +17,7 @@ function Page1() {
                     <h2>Sidebar</h2>
                     <ul>
             <li>
-              <Link to='/Page2'>Link to Page 2</Link>
+              <Link to='/Page2'>Surveys</Link>
             </li>
             <li>
               <Link to='/Tools'>Tools</Link>
