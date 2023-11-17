@@ -31,7 +31,7 @@ const Layout = () => {
           <h2>Explore</h2>
           <ul>
             <li>
-              <Link to='/Page1'>Link to Page 1</Link>
+              <Link to='/Page1'>Additional Information</Link>
             </li>
             <li>
               <Link to='/Page2'>Surveys</Link>
@@ -61,12 +61,6 @@ const Layout = () => {
 
         <main className='main-content'>
           <Posts /> {/* Display the Post component */}
-          <Posts />
-          <Posts />
-          <Posts />
-          <Posts />
-          <Posts />
-          <Posts />
           {/* Add more posts here */}
         </main>
 
