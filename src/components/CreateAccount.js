@@ -2,7 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
-const CreateAccount = ({ onSignIn, onAccountCreateSuccess  }) => {
+const CreateAccount = ({ onSignUp  }) => {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState('');
@@ -48,12 +48,13 @@ const CreateAccount = ({ onSignIn, onAccountCreateSuccess  }) => {
       console.log('New Account:', newAccount);
 
       // Trigger the onSignIn callback
-      onSignIn();
+      onSignUp();
 
       // Trigger the onAccountCreateSuccess callback with the new user information
-      onAccountCreateSuccess(newAccount);
+      //onAccountCreateSuccess(newAccount);
 
       // Navigate to the home page
+      
       navigate('/');
     } else {
       // Passwords do not match, set a flag to indicate the mismatch
@@ -65,9 +66,8 @@ const CreateAccount = ({ onSignIn, onAccountCreateSuccess  }) => {
     <div className="create-account-page">
       <header className="header">
         <h1>Lahaina Outreach</h1>
-        <hr className="header-line" />
       </header>
-      <div className="create-account-container">
+      <div className="layout-account-container">
         <div className="create-account-form">
           <h2>Create an Account</h2>
           <form onSubmit={handleSignUp}>

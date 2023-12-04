@@ -178,7 +178,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffffff;
+    background-color:rgba(246,175,131,255);
   }
   
   .create-account-form {
@@ -242,7 +242,7 @@ body {
   
   /* Styling for the Create Account page */
 .create-account-page {
-    background-color: #ffffff;
+    
     flex-direction: column;
     align-items: center;
     padding: 0px;
@@ -257,6 +257,12 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+   /* Center the container vertically and horizontally */
+   position: absolute;
+   top: 350%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 
 .login-input {
@@ -384,5 +390,50 @@ body {
   text-decoration: underline;
 }
 
-
+.comment-input {
+  height: 20px;
+  width: 188px;
+  margin-right: 10px;
+}
   
+
+
+.create-post-input,
+.create-post-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.create-post-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-post-button:hover {
+  background-color: #0056b3;
+}
+
+.create-post-link {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.create-post-link:hover {
+  text-decoration: underline;
+}
