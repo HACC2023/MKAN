@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './style.css';
 import Layout from './Layout';
 import reportWebVitals from './a/reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Page1 from './components/Page1';
 import Page2 from './components/Page2';
 import ToolsPage from "./components/toolsPage/ToolsPage"
@@ -18,21 +18,33 @@ const App = () => {
   );
   const [posts, setPosts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  //const navigate = useNavigate();
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
     setPosts(storedPosts);
   }, []);
 
+ 
+  const handleSignUp = (userInfo) => {
+    setCurrentUser(userInfo);
+    setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true');
+    alert("Account Created");
+    
+  };
   const handleSignIn = (userInfo) => {
     setCurrentUser(userInfo);
     setIsAuthenticated(true);
     localStorage.setItem('isAuthenticated', 'true');
+    alert("Sign in Successful");
+    
   };
 
   const handleSignOut = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
+    alert("Sign out Successful");
   };
 
   const addPost = (post) => {
@@ -72,7 +84,7 @@ const App = () => {
         <Route path="/login" element={<LoginForm onSignIn={handleSignIn} />} />
         <Route
           path="/create-account"
-          element={<CreateAccount onSignIn={handleSignIn} />}
+          element={<CreateAccount onSignUp={handleSignUp} />}
         />
         <Route
           path="/create-post"
